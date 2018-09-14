@@ -26,7 +26,8 @@ namespace epam
             {
                 new Student {First="Лидия", Last="Иванова", GroupID = 1, Rating= new List<int> {4, 5, 6, 7}},
                 new Student {First="Светлана", Last="Крыж", GroupID = 1, Rating= new List<int> {9, 8, 9, 7}},
-                new Student {First="Дмитрий", Last="Белько", GroupID = 2, Rating= new List<int> {5, 5, 5, 5, 5}}
+                new Student {First="Дмитрий", Last="Белько", GroupID = 2, Rating= new List<int> {5, 5, 5, 5, 5}},
+                new Student {First="Тимофей", Last="Грищенко", GroupID = 2, Rating= new List<int> {5, 5, 5, 5, 5}}
             };
         static void Main(string[] args)
         {
