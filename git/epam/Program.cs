@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 // commit 1
+<<<<<<< HEAD
 // commit 2
+=======
+>>>>>>> cae677a... first commit
 namespace epam
 {
     public class Group
