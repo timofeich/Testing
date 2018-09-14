@@ -5,13 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 // commit 1
-<<<<<<< HEAD
-<<<<<<< HEAD
 // commit 2
-=======
->>>>>>> cae677a... first commit
-=======
->>>>>>> parent of 564ab5e... second commit
 namespace epam
 {
     public class Group
