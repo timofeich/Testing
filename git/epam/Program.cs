@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
 
-3.       Есть возможность считать средний балл отдельного студента
-4.       Есть возможность считать средний балл всей группы
-
-*/
+// commit 1
 namespace epam
 {
     public class Group
