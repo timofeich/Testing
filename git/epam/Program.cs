@@ -31,7 +31,7 @@ namespace epam
             };
         static void Main(string[] args)
         {
-            Console.WriteLine("Здаравствуйте");
+            Console.WriteLine("Здравствуйте");
             Console.WriteLine("В какой группе желаете посчитать средний балл? ");
             int id = Int32.Parse(Console.ReadLine());
 
