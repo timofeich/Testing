@@ -24,7 +24,7 @@ namespace epam
     {
         public static List<Student> students = new List<Student>
             {
-                new Student {First="Лидия", Last="Иванова", GroupID = 1, Rating= new List<int> {4, 5, 6, 7}}
+                new Student {First="Елена", Last="Иванова", GroupID = 1, Rating= new List<int> {4, 5, 6, 7}}
             };
         static void Main(string[] args)
         {
