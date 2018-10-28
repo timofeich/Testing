@@ -48,6 +48,10 @@ namespace Selenium_WebDriver
             driver.FindElement(By.XPath("//div[@class='background-overlay-light']")).Click();
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@type='submit']")));
             driver.FindElement(By.XPath("//div[@class='btn btn-blue btn-search']")).Click();
+
+            Assert.AreEqual(driver.FindElement(By.ClassName("airport-name")).Text, "Minsk");
+
+            driver.Close();
             driver.Quit();
          
         }
