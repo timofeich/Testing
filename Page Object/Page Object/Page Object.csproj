@@ -59,8 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageObject.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
+    <Compile Include="PageObject\ChoosingCity.cs" />
+    <Compile Include="UnitTests\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
