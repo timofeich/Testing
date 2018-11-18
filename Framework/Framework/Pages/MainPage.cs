@@ -1,11 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
 
 namespace Framework.Pages
 {
     public class MainPage
     {       
         private const string BASE_URL = "https://www.airbaltic.com/en-BY/index";
+        private static DateTime date = DateTime.Now;
+        private string yesterdayDate = date.AddDays(-1).ToString("dd.MM.yyyy");
 
         [FindsBy(How = How.XPath, Using = "//div[@class='btn btn-blue btn-search']")]
         private IWebElement buttonSearchTicket;
@@ -19,7 +22,7 @@ namespace Framework.Pages
         [FindsBy(How = How.XPath, Using = "//input[@name='flt_leaving_on']")]
         private IWebElement departureDate;
 
-        [FindsBy(How = How.XPath, Using = "//ul[@class='form-errors']")]
+        [FindsBy(How = How.XPath, Using = "//ul[@class ='form-errors']")]
         private IWebElement errorMess;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='background-overlay-light']")]
@@ -55,9 +58,9 @@ namespace Framework.Pages
             enterCity.Click();
         }
 
-        public void EnterDepartureDate(string depDate)
+        public void EnterDepartureDate()
         {
-            departureDate.SendKeys(depDate);
+            departureDate.SendKeys(yesterdayDate);
         }
 
         public void BackgroundClicked()

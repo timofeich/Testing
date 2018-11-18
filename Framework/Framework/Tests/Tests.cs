@@ -24,7 +24,7 @@ namespace Framework
         [TestCase]
         public void Test1()
         {         
-            steps.InputYesterdayDepartureDate("17.11.2018");
+            steps.InputYesterdayDepartureDate();
             Assert.AreEqual(errorMess, steps.ErrorMessage());
         }
     }

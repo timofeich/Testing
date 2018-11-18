@@ -16,13 +16,13 @@ namespace Framework.Steps
             Driver.DriverInstance.CloseBrowser();
         }
 
-        public void InputYesterdayDepartureDate(string departureDate)
+        public void InputYesterdayDepartureDate()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.OpenPage();
             mainPage.EnterCityOfDeparture("RIX");         
             mainPage.EnterCityOfArrival("MSQ");
-            mainPage.EnterDepartureDate(departureDate);
+            mainPage.EnterDepartureDate();
             mainPage.BackgroundClicked();
         }
 
