@@ -30,7 +30,7 @@ namespace WebDriver
             driver.FindElement(By.XPath("//div[@class='background-overlay-light']")).Click();
             driver.FindElement(By.XPath("//div[@class='btn btn-blue btn-search']")).Click();
 
-            Assert.AreEqual(driver.FindElement(By.ClassName("airport-name")).Text, "Minsk");
+            Assert.AreEqual(driver.FindElement(By.ClassName("item-to info-tooltip")).Text, "MSQ");
 
             driver.Quit();
         }
