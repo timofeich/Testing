@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Framework
 {
     //Choosing departure date before today's date
-
     [TestFixture]
     public class Tests
     {
-        
-        [Test]
-        public void CanChooseDepDateBeforeTodayDate()
-        {
-            //resharper
-            //1)open site
-            //2)dep city
-            //3)arr city
-            //4)One way
-            //5)Enter yesterday date
-            //6)isEqual(Your selected flight...)
-            //7)Quit();
-            private Steps.Steps steps = new Steps.Steps();
+        private Steps.Steps steps = new Steps.Steps();
+        private const string errorMess = "Your selected flight has already departed.";
 
-        [Test]
-        public void OneCanLoginGithub()
+        [SetUp]
+        public void Init()
         {
-            steps.EnterCities(USERNAME, PASSWORD);
-            Assert.AreEqual(USERNAME, steps.GetLoggedInUserName());
+            steps.InitBrowser();
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            steps.CloseBrowser();
+        }
+
+        [TestCase]
+        public void Test1()
+        {         
+            steps.InputYesterdayDepartureDate("17.11.2018");
+            Assert.AreEqual(errorMess, steps.ErrorMessage());
         }
     }
-    }
 }
+

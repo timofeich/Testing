@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 
 namespace Framework.Steps
 {
@@ -17,17 +16,20 @@ namespace Framework.Steps
             Driver.DriverInstance.CloseBrowser();
         }
 
-        public void EnterCities(string cityOfDeparture, string cityOfArrival)//разделить на методы
+        public void InputYesterdayDepartureDate(string departureDate)
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.OpenPage();
-            mainPage.EnterCityOfDeparture(cityOfDeparture);
-            mainPage.EnterCityOfArrival(cityOfArrival);
-            mainPage.ClickOnOneWayTicket();
-            mainPage.EnterDepartureDate("11.11.2018");
+            mainPage.EnterCityOfDeparture("RIX");         
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.EnterDepartureDate(departureDate);
+            mainPage.BackgroundClicked();
         }
 
-        
-
+        public string ErrorMessage()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            return mainPage.GetErrorMes();
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
 namespace Framework.Driver
 {
     public class DriverInstance
-    {
-        
+    {  
         private static IWebDriver driver;
 
         private DriverInstance() { }
@@ -16,7 +14,6 @@ namespace Framework.Driver
             if (driver == null)
             {
                 driver = new ChromeDriver();
-                driver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(30));
                 driver.Manage().Window.Maximize();
             }
             return driver;

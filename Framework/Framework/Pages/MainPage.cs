@@ -1,27 +1,34 @@
-﻿using Framework.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace Framework.Pages
 {
     public class MainPage
-    {
+    {       
         private const string BASE_URL = "https://www.airbaltic.com/en-BY/index";
 
         [FindsBy(How = How.XPath, Using = "//div[@class='btn btn-blue btn-search']")]
         private IWebElement buttonSearchTicket;
 
-        [FindsBy(How = How.XPath, Using = "//summary[@aria-label='Create new…']")]
-        private IWebElement buttonOneWay;
-
-        [FindsBy(How = How.XPath, Using = "//input[@placeholder='From']")]
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='To']")]
         private IWebElement cityOfArrival;
 
-        [FindsBy(How = How.XPath, Using = "//input[@placeholder='To']")]
+        [FindsBy(How = How.XPath, Using = "//input[@placeholder='From']")]
         private IWebElement cityOfDeparture;
 
         [FindsBy(How = How.XPath, Using = "//input[@name='flt_leaving_on']")]
         private IWebElement departureDate;
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class='form-errors']")]
+        private IWebElement errorMess;
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='background-overlay-light']")]
+        private IWebElement background;
+
+        [FindsBy(How = How.XPath, Using = "//div[@class ='airport']")]
+        private IWebElement enterCity;
+
+
 
         private IWebDriver driver;
 
@@ -36,31 +43,32 @@ namespace Framework.Pages
             driver.Navigate().GoToUrl(BASE_URL);
         }
 
-        public void ClickOnOneWayTicket()
-        {
-            buttonOneWay.Click();
-        }
-
         public void EnterCityOfDeparture(string departureCity)
         {
             cityOfDeparture.SendKeys(departureCity);
+            enterCity.Click();
         }
 
         public void EnterCityOfArrival(string arrivalCity)
         {
             cityOfArrival.SendKeys(arrivalCity);
+            enterCity.Click();
         }
 
-        public void EnterDepartureDate(string yesterdayDate)//закодить дату
+        public void EnterDepartureDate(string depDate)
         {
-            departureDate.SendKeys(yesterdayDate);
+            departureDate.SendKeys(depDate);
         }
 
-        public void ClickSearchTicket()
+        public void BackgroundClicked()
         {
-            buttonSearchTicket.Click(); 
+            background.Click();
         }
 
+        public string GetErrorMes()
+        {
+            return errorMess.Text;
+        }
 
     }
 }
