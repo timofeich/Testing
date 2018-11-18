@@ -9,7 +9,7 @@ namespace PageObject.PageObject
 
         private By departureCity = By.XPath("//input[@placeholder='From']");
         private By arrivalCity = By.XPath("//input[@placeholder='To']");
-        private By searchResults = By.XPath("//div[@class ='airport']");
+        private By enterCity = By.XPath("//div[@class ='airport']");
 
         public ChoosingCity(IWebDriver driver)
         {
@@ -23,15 +23,15 @@ namespace PageObject.PageObject
             driver.FindElement(departureCity).SendKeys(city);
         }
 
-        public void Enter_acity(string city)
+        public void EnterArrivalCity(string city)
         {
             driver.FindElement(arrivalCity).Clear();
             driver.FindElement(arrivalCity).SendKeys(city);
         }
 
-        public void Enter_result_click()
+        public void EnterCity()
         {
-            driver.FindElement(searchResults).Click();
+            driver.FindElement(enterCity).Click();
         }
     }
 }

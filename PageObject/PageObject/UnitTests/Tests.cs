@@ -17,8 +17,8 @@ namespace PageObject
             homePage.goToPage();
 
             enter.InputDepartureCity("RIX");
-            enter.Enter_result_click();
-            enter.Enter_acity("RIX");
+            enter.EnterCity();
+            enter.EnterArrivalCity("RIX");
 
             Assert.AreEqual(driver.FindElement(By.ClassName("dropdown-item-empty")).Text, "Unfortunately, we do not fly to/from RIX");
             driver.Quit();
