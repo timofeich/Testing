@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace Framework
 {
@@ -6,26 +7,31 @@ namespace Framework
     [TestFixture]
     public class Tests
     {
-        private Steps.Steps steps = new Steps.Steps();
-        private const string errorMess = "Your selected flight has already departed.";
+        public IWebDriver driver;
+        private const string errorMess = "Please select the departure date.";
 
         [SetUp]
         public void Init()
         {
-            steps.InitBrowser();
+            driver= Driver.DriverInstance.GetInstance();
         }
 
         [TearDown]
         public void Cleanup()
         {
-            steps.CloseBrowser();
+            Driver.DriverInstance.CloseBrowser();
         }
 
-        [TestCase]
-        public void Test1()
-        {         
-            steps.InputYesterdayDepartureDate();
-            Assert.AreEqual(errorMess, steps.ErrorMessage());
+        [Test]
+        public void InputYesterdayDepartureDate()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.EnterDepartureDate();
+            mainPage.SearchTicket();
+            Assert.AreEqual(errorMess, mainPage.GetErrorMes());
         }
     }
 }

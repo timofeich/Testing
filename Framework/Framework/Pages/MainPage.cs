@@ -35,9 +35,11 @@ namespace Framework.Pages
 
         private IWebDriver driver;
 
+
         public MainPage(IWebDriver driver)
-        {
+        { 
             this.driver = driver;
+        
             PageFactory.InitElements(this.driver, this);
         }
 
@@ -48,24 +50,29 @@ namespace Framework.Pages
 
         public void EnterCityOfDeparture(string departureCity)
         {
+            cityOfDeparture.Clear();
             cityOfDeparture.SendKeys(departureCity);
             enterCity.Click();
         }
 
         public void EnterCityOfArrival(string arrivalCity)
         {
+            cityOfArrival.Clear();
             cityOfArrival.SendKeys(arrivalCity);
             enterCity.Click();
+            background.Click();
         }
+
+        public void SearchTicket()
+        {   
+
+            buttonSearchTicket.Click();
+        }
+
 
         public void EnterDepartureDate()
         {
             departureDate.SendKeys(yesterdayDate);
-        }
-
-        public void BackgroundClicked()
-        {
-            background.Click();
         }
 
         public string GetErrorMes()
