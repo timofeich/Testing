@@ -3,12 +3,10 @@ using OpenQA.Selenium;
 
 namespace Framework
 {
-    //Choosing departure date before today's date
     [TestFixture]
     public class Tests
     {
         public IWebDriver driver;
-        private const string errorMess = "Please select the departure date.";
 
         [SetUp]
         public void Init()
@@ -30,8 +28,7 @@ namespace Framework
             mainPage.EnterCityOfDeparture("RIX");
             mainPage.EnterCityOfArrival("MSQ");
             mainPage.EnterDepartureDate();
-            mainPage.SearchTicket();
-            Assert.AreEqual(errorMess, mainPage.GetErrorMes());
+            Assert.AreEqual("Your selected flight has already departed", mainPage.GetErrorMes());
         }
     }
 }

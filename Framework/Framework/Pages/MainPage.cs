@@ -10,9 +10,6 @@ namespace Framework.Pages
         private static DateTime date = DateTime.Now;
         private string yesterdayDate = date.AddDays(-1).ToString("dd.MM.yyyy");
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='btn btn-blue btn-search']")]
-        private IWebElement buttonSearchTicket;
-
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='To']")]
         private IWebElement cityOfArrival;
 
@@ -31,15 +28,11 @@ namespace Framework.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class ='airport']")]
         private IWebElement enterCity;
 
-
-
         private IWebDriver driver;
 
-
         public MainPage(IWebDriver driver)
-        { 
-            this.driver = driver;
-        
+        {
+            this.driver = driver;  
             PageFactory.InitElements(this.driver, this);
         }
 
@@ -62,13 +55,6 @@ namespace Framework.Pages
             enterCity.Click();
             background.Click();
         }
-
-        public void SearchTicket()
-        {   
-
-            buttonSearchTicket.Click();
-        }
-
 
         public void EnterDepartureDate()
         {
