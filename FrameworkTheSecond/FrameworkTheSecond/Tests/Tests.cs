@@ -25,14 +25,13 @@ namespace FrameworkTheSecond.Tests
         }
 
         [Test]
-        public void InputYesterdayDepartureDate()
+        public void InputSameCityOfDepartureAndArrival()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.OpenPage();
             mainPage.EnterCityOfDeparture("RIX");
-            mainPage.EnterCityOfArrival("MSQ");
-            mainPage.EnterDepartureDate();
-            Assert.AreEqual("Your selected flight has already departed", mainPage.GetErrorMes());
+            mainPage.EnterCityOfArrivalWhithoutAccept("RIX");
+            Assert.AreEqual(mainPage.GetErrorCityChoosing(),"Unfortunately, we do not fly to/from RIX");
         }
     }
 }

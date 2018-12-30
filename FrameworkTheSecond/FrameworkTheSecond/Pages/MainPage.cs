@@ -20,6 +20,9 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='From']")]
         private IWebElement cityOfDeparture;
 
+        [FindsBy(How = How.XPath, Using = "//input[@name='flt_returning_on']")]
+        private IWebElement arrivalDate;
+
         [FindsBy(How = How.XPath, Using = "//input[@name='flt_leaving_on']")]
         private IWebElement departureDate;
 
@@ -32,6 +35,21 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class ='airport']")]
         private IWebElement enterCity;
 
+        [FindsBy(How = How.XPath, Using = "//div[@class ='btn btn-blue']")]
+        private IWebElement acceptCookie;
+
+        [FindsBy(How = How.XPath, Using = "//div[@class ='header-nav-item pre-header-lang']")]
+        private IWebElement changingLanguage;
+
+        [FindsBy(How = How.XPath, Using = "//li[@class ='dropdown-item-empty']")]
+        private IWebElement emptyCityList;
+
+        [FindsBy(How = How.XPath, Using = "//div[text() ='One-way']")]
+        private IWebElement oneWayFlight;
+
+        [FindsBy(How = How.XPath, Using = "//a[text() ='Русский']")]
+        private IWebElement choosingRussianLanguage;
+
         private IWebDriver driver;
 
         public MainPage(IWebDriver driver)
@@ -43,6 +61,7 @@ namespace FrameworkTheSecond.Pages
         public void OpenPage()
         {
             driver.Navigate().GoToUrl(BASE_URL);
+            acceptCookie.Click();
         }
 
         public void EnterCityOfDeparture(string departureCity)
@@ -60,14 +79,44 @@ namespace FrameworkTheSecond.Pages
             background.Click();
         }
 
+        public void EnterCityOfArrivalWhithoutAccept(string arrivalCity)
+        {
+            cityOfArrival.Clear();
+            cityOfArrival.SendKeys(arrivalCity);
+        }
+
         public void EnterDepartureDate()
         {
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementByName('flt_leaving_on').removeAttribute('readonly',0);");
             departureDate.SendKeys(yesterdayDate);
+        }
+
+        public void EnterArrivalDate()
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementByName('flt_returning_on').removeAttribute('readonly',0);");
+            arrivalDate.SendKeys(yesterdayDate);
+        }
+
+        public void ChangeSiteLanguage(string languageName)
+        {
+            changingLanguage.Click();
+            choosingRussianLanguage.Click();
+
+        }
+
+        public void ChoosingOneWayFlight()
+        {
+            oneWayFlight.Click();
         }
 
         public string GetErrorMes()
         {
             return errorMess.Text;
+        }
+
+        public string GetErrorCityChoosing()
+        {
+            return emptyCityList.Text;
         }
     }
 }
