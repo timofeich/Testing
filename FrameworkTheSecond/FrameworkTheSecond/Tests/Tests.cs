@@ -33,5 +33,37 @@ namespace FrameworkTheSecond.Tests
             mainPage.EnterCityOfArrivalWhithoutAccept("RIX");
             Assert.AreEqual(mainPage.GetErrorCityChoosing(),"Unfortunately, we do not fly to/from RIX");
         }
+
+        [Test]
+        public void InputYesterdayDepartureDate()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.EnterDepartureDate();
+           // Assert.AreEqual(mainPage.GetErrorMes(), "Your selected flight has already departed.");
+        }
+
+        [Test]
+        public void ChooseRussianLanguage()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.ChangeSiteLanguage();
+            Assert.AreEqual(mainPage.GetSiteLanguage(), "Планируйте и бронируйте");
+        }
+
+        [Test]
+        public void SearchTicketWithoutInputingDate()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.ChoosingOneWayFlight();
+            mainPage.SearchTicket();
+            Assert.AreEqual(mainPage.GetErrorMes(), "Please select the departure date.");
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//input[@name='flt_returning_on']")]
         private IWebElement arrivalDate;
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='flt_leaving_on']")]
+        [FindsBy(How = How.XPath, Using = "//i[@class='calendar-marker']")]
         private IWebElement departureDate;
 
         [FindsBy(How = How.XPath, Using = "//ul[@class ='form-errors']")]
@@ -44,11 +44,17 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//li[@class ='dropdown-item-empty']")]
         private IWebElement emptyCityList;
 
-        [FindsBy(How = How.XPath, Using = "//div[text() ='One-way']")]
+        [FindsBy(How = How.XPath, Using = "//span[text() ='One-way']")]
         private IWebElement oneWayFlight;
 
         [FindsBy(How = How.XPath, Using = "//a[text() ='Русский']")]
         private IWebElement choosingRussianLanguage;
+
+        [FindsBy(How = How.XPath, Using = "//span[text() ='Планируйте и бронируйте']")]
+        private IWebElement getSiteLanguage;
+
+        [FindsBy(How = How.XPath, Using = "//div[class ='btn btn-blue btn-search']")]
+        private IWebElement searchingTicket;
 
         private IWebDriver driver;
 
@@ -87,8 +93,7 @@ namespace FrameworkTheSecond.Pages
 
         public void EnterDepartureDate()
         {
-            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementByName('flt_leaving_on').removeAttribute('readonly',0);");
-            departureDate.SendKeys(yesterdayDate);
+            departureDate.Click();
         }
 
         public void EnterArrivalDate()
@@ -97,13 +102,17 @@ namespace FrameworkTheSecond.Pages
             arrivalDate.SendKeys(yesterdayDate);
         }
 
-        public void ChangeSiteLanguage(string languageName)
+        public void ChangeSiteLanguage()
         {
             changingLanguage.Click();
             choosingRussianLanguage.Click();
 
         }
 
+        public void SearchTicket()
+        {
+            searchingTicket.Click();
+        }
         public void ChoosingOneWayFlight()
         {
             oneWayFlight.Click();
@@ -117,6 +126,11 @@ namespace FrameworkTheSecond.Pages
         public string GetErrorCityChoosing()
         {
             return emptyCityList.Text;
+        }
+
+        public string GetSiteLanguage()
+        {
+            return getSiteLanguage.Text;
         }
     }
 }
