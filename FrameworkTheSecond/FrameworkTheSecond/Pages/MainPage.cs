@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace FrameworkTheSecond.Pages
 {
     class MainPage
     {
         private const string BASE_URL = "https://www.airbaltic.com/en-BY/index";
-        private static DateTime date = DateTime.Now;
-        private string yesterdayDate = date.AddDays(-1).ToString("dd.MM.yyyy");
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='To']")]
         private IWebElement cityOfArrival;
@@ -91,15 +90,14 @@ namespace FrameworkTheSecond.Pages
             cityOfArrival.SendKeys(arrivalCity);
         }
 
-        public void EnterDepartureDate()
+        public void EnterDepartureDate(string someDepartureDate)
         {
-            departureDate.Click();
+            departureDate.SendKeys(someDepartureDate);
         }
 
-        public void EnterArrivalDate()
+        public void EnterArrivalDate(string someArrivalDate)
         {
-            ((IJavaScriptExecutor)driver).ExecuteScript("document.getElementByName('flt_returning_on').removeAttribute('readonly',0);");
-            arrivalDate.SendKeys(yesterdayDate);
+            arrivalDate.SendKeys(someArrivalDate);
         }
 
         public void ChangeSiteLanguage()
