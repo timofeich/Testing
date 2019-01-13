@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
 
 namespace FrameworkTheSecond.Pages
 {
@@ -61,8 +55,8 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71]")]
         private IWebElement plusOneAdult;
 
-        [FindsBy(How = How.XPath, Using = "//i[@class ='close-icon']")]
-        private IWebElement closingNewsSubscribing;
+        [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71]")]
+        private IWebElement plusOneInfant;
 
         [FindsBy(How = How.XPath, Using = "//span[text() ='10+ passengers']")]
         private IWebElement numberOfAdults;
@@ -79,7 +73,6 @@ namespace FrameworkTheSecond.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
             acceptCookie.Click();
-            closingNewsSubscribing.Click();
         }
 
         public void EnterCityOfDeparture(string departureCity)
@@ -138,6 +131,14 @@ namespace FrameworkTheSecond.Pages
             for (int i = 1; i < numberOfAdultsPassanger; i++)
             {
                 plusOneAdult.Click();
+            }
+        }
+
+        public void InputNumberOfInfants(int numberOfInfantPassanger)
+        {
+            for (int i = 1; i < numberOfInfantPassanger; i++)
+            {
+                plusOneInfant.Click();
             }
         }
 

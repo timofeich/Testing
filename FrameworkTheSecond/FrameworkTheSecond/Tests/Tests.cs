@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -49,6 +45,7 @@ namespace FrameworkTheSecond.Tests
             Assert.AreEqual(mainPage.GetErrorMes(), "Your selected flight has already departed.");
         }
 
+        [Test]
         public void InputArrivalDateEarlierThanDeparture()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
@@ -94,6 +91,18 @@ namespace FrameworkTheSecond.Tests
             Assert.AreEqual(mainPage.GetAdultsNumber(), "10+ passengers");
         }
 
+        [Test]
+        public void InputMoreInfantsThanAdults()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.ChoosingTypeOfPassender();
+            mainPage.InputNumberOfInfants(2);
+            Assert.AreEqual(mainPage.GetErrorMes(), "The number of infants can not be higher than the number of adults. " +
+                "Only an adult can accompany an infant. ");
+        }
 
 
     }
