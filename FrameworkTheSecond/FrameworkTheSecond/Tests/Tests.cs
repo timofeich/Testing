@@ -104,6 +104,18 @@ namespace FrameworkTheSecond.Tests
                 "Only an adult can accompany an infant. ");
         }
 
+        [Test]
+        public void TheCorrectnessOfSerchingTickets()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.ChoosingOneWayFlight();
+            mainPage.EnterDepartureDate(tomorrowDate);
+            mainPage.SearchTicket();
+            Assert.AreEqual(mainPage.GetAiportName(), "RIX");
+        }
 
     }
 }

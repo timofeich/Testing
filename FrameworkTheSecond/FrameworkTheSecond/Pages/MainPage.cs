@@ -61,6 +61,9 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//span[text() ='10+ passengers']")]
         private IWebElement numberOfAdults;
 
+        [FindsBy(How = How.XPath, Using = "//div[@class ='item-to info-tooltip']")]
+        private IWebElement airportName;
+
         private IWebDriver driver;
 
         public MainPage(IWebDriver driver)
@@ -150,6 +153,11 @@ namespace FrameworkTheSecond.Pages
         public string GetErrorMes()
         {
             return errorMess.Text;
+        }
+
+        public string GetAiportName()
+        {
+            return airportName.Text;
         }
 
         public string GetErrorCityChoosing()
