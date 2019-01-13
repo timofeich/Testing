@@ -105,7 +105,7 @@ namespace FrameworkTheSecond.Tests
         }
 
         [Test]
-        public void TheCorrectnessOfSerchingTickets()
+        public void CheckingCorrectnessOfSerchingTickets()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.OpenPage();
@@ -117,5 +117,25 @@ namespace FrameworkTheSecond.Tests
             Assert.AreEqual(mainPage.GetAiportName(), "RIX");
         }
 
+        [Test]
+        public void SearchingNonexistentDepartureCity()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDepartureWhithoutAccept("somecity");
+            Assert.AreEqual(mainPage.GetErrorCityChoosing(), "Unfortunately, we do not fly to/from somecity");
+        }
+
+        [Test]
+        public void TryingSearchingTicketWithoutArrivalCity()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.ChoosingOneWayFlight();
+            mainPage.EnterDepartureDate(tomorrowDate);
+            mainPage.SearchTicket();
+            Assert.AreEqual(mainPage.GetErrorMes(), "Please select the destination of your journey.");
+        }
     }
 }

@@ -98,6 +98,12 @@ namespace FrameworkTheSecond.Pages
             cityOfArrival.SendKeys(arrivalCity);
         }
 
+        public void EnterCityOfDepartureWhithoutAccept(string departureCity)
+        {
+            cityOfDeparture.Clear();
+            cityOfDeparture.SendKeys(departureCity);
+        }
+
         public void EnterDepartureDate(string someDepartureDate)
         {
             departureDate.SendKeys(someDepartureDate);
