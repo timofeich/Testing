@@ -77,8 +77,21 @@ namespace FrameworkTheSecond.Tests
             mainPage.OpenPage();
             mainPage.EnterCityOfDeparture("RIX");
             mainPage.EnterCityOfArrival("MSQ");
+            mainPage.ChoosingOneWayFlight();
             mainPage.SearchTicket();
             Assert.AreEqual(mainPage.GetErrorMes(), "Please select the departure date.");
+        }
+
+        [Test]
+        public void InputMoreThanTenAdults()
+        {
+            Pages.MainPage mainPage = new Pages.MainPage(driver);
+            mainPage.OpenPage();
+            mainPage.EnterCityOfDeparture("RIX");
+            mainPage.EnterCityOfArrival("MSQ");
+            mainPage.ChoosingTypeOfPassender();
+            mainPage.InputNumberOfAdults(10);
+            Assert.AreEqual(mainPage.GetAdultsNumber(), "10+ passengers");
         }
 
 

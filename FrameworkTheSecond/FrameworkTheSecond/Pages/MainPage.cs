@@ -31,7 +31,7 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='background-overlay-light']")]
         private IWebElement background;
 
-        [FindsBy(How = How.XPath, Using = "//div[@class ='airport']")]
+        [FindsBy(How = How.XPath, Using = "//li[@class ='dropdown-item']")]
         private IWebElement enterCity;
 
         [FindsBy(How = How.XPath, Using = "//div[@class ='btn btn-blue']")]
@@ -52,8 +52,20 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//span[text() ='Планируйте и бронируйте']")]
         private IWebElement getSiteLanguage;
 
-        [FindsBy(How = How.XPath, Using = "//div[class ='btn btn-blue btn-search']")]
+        [FindsBy(How = How.XPath, Using = "//button[text() ='Find flights & fares']")]
         private IWebElement searchingTicket;
+
+        [FindsBy(How = How.XPath, Using = "//div[@class ='pax-selector-block']")]
+        private IWebElement passengerTypes;
+
+        [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71]")]
+        private IWebElement plusOneAdult;
+
+        [FindsBy(How = How.XPath, Using = "//i[@class ='close-icon']")]
+        private IWebElement closingNewsSubscribing;
+
+        [FindsBy(How = How.XPath, Using = "//span[text() ='10+ passengers']")]
+        private IWebElement numberOfAdults;
 
         private IWebDriver driver;
 
@@ -67,6 +79,7 @@ namespace FrameworkTheSecond.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
             acceptCookie.Click();
+            closingNewsSubscribing.Click();
         }
 
         public void EnterCityOfDeparture(string departureCity)
@@ -81,7 +94,6 @@ namespace FrameworkTheSecond.Pages
             cityOfArrival.Clear();
             cityOfArrival.SendKeys(arrivalCity);
             enterCity.Click();
-            background.Click();
         }
 
         public void EnterCityOfArrivalWhithoutAccept(string arrivalCity)
@@ -104,16 +116,34 @@ namespace FrameworkTheSecond.Pages
         {
             changingLanguage.Click();
             choosingRussianLanguage.Click();
-
         }
 
         public void SearchTicket()
         {
             searchingTicket.Click();
         }
+
         public void ChoosingOneWayFlight()
         {
             oneWayFlight.Click();
+        }
+
+        public void ChoosingTypeOfPassender()
+        {
+            passengerTypes.Click();
+        }
+
+        public void InputNumberOfAdults(int numberOfAdultsPassanger)
+        {
+            for (int i = 1; i < numberOfAdultsPassanger; i++)
+            {
+                plusOneAdult.Click();
+            }
+        }
+
+        public string GetAdultsNumber()
+        {
+            return numberOfAdults.Text;
         }
 
         public string GetErrorMes()
