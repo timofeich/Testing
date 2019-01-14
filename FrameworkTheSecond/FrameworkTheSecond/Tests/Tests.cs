@@ -101,11 +101,11 @@ namespace FrameworkTheSecond.Tests
             mainPage.ChoosingTypeOfPassender();
             mainPage.InputNumberOfInfants(2);
             Assert.AreEqual(mainPage.GetErrorMes(), "The number of infants can not be higher than the number of adults. " +
-                "Only an adult can accompany an infant. ");
+                "Only an adult can accompany an infant.");
         }
 
         [Test]
-        public void CheckingCorrectnessOfSerchingTickets()
+        public void CheckingCorrectnessOfSearchingTickets()
         {
             Pages.MainPage mainPage = new Pages.MainPage(driver);
             mainPage.OpenPage();

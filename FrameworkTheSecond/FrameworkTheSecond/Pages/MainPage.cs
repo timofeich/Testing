@@ -31,6 +31,9 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class ='btn btn-blue']")]
         private IWebElement acceptCookie;
 
+        [FindsBy(How = How.XPath, Using = "//i[@data-v-1484333a]")]
+        private IWebElement closingNewsSubscribing;
+
         [FindsBy(How = How.XPath, Using = "//div[@class ='header-nav-item pre-header-lang']")]
         private IWebElement changingLanguage;
 
@@ -52,13 +55,13 @@ namespace FrameworkTheSecond.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class ='pax-selector-block']")]
         private IWebElement passengerTypes;
 
-        [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71]")]
+        [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71][2]")]
         private IWebElement plusOneAdult;
 
-        [FindsBy(How = How.XPath, Using = "//span[@data-v-7e5e3b71]")]
+        [FindsBy(How = How.XPath, Using = "//div[@data-v-6abbcb88 and @data-v-7e5e3b71][3]/span[@data-v-7e5e3b71][2]")]
         private IWebElement plusOneInfant;
 
-        [FindsBy(How = How.XPath, Using = "//span[text() ='10+ passengers']")]
+        [FindsBy(How = How.XPath, Using = "//span[@data-v-6abbcb88]")]
         private IWebElement numberOfAdults;
 
         [FindsBy(How = How.XPath, Using = "//div[@class ='item-to info-tooltip']")]
@@ -76,6 +79,7 @@ namespace FrameworkTheSecond.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
             acceptCookie.Click();
+            closingNewsSubscribing.Click();
         }
 
         public void EnterCityOfDeparture(string departureCity)
@@ -106,11 +110,13 @@ namespace FrameworkTheSecond.Pages
 
         public void EnterDepartureDate(string someDepartureDate)
         {
+            departureDate.Click();
             departureDate.SendKeys(someDepartureDate);
         }
 
         public void EnterArrivalDate(string someArrivalDate)
         {
+            cityOfArrival.Click();
             arrivalDate.SendKeys(someArrivalDate);
         }
 
@@ -145,7 +151,7 @@ namespace FrameworkTheSecond.Pages
 
         public void InputNumberOfInfants(int numberOfInfantPassanger)
         {
-            for (int i = 1; i < numberOfInfantPassanger; i++)
+            for (int i = 0; i < numberOfInfantPassanger; i++)
             {
                 plusOneInfant.Click();
             }
